@@ -131,7 +131,7 @@ var appMaster = {
                 $('nav').addClass('scrolled');
 
             } else {
-                $('nav').removeClass('scrolled');
+               // $('nav').removeClass('scrolled');  // edit bee
             }
         });
     },
