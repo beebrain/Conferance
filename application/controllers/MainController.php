@@ -10,13 +10,22 @@ class MainController extends CI_Controller {
         $this->load->view('index.php');
         $this->load->view('template/footer.php');
     }
-    
-    public function signup(){
-        $this->load->view('template/head.php');
-        $this->load->view('template/nav_sub.php');
-        $this->load->view('signup.php');
-        $this->load->view('template/footer.php');
-        
+
+    public function main() {
+        $this->load->view('Map.php');
+    }
+
+    public function signup() {
+        $this->load->library('Recaptcha');
+        $data['captcha'] = $this->recaptcha->getWidget();
+        $data['script_captcha'] = $this->recaptcha->getScriptTag();
+        $this->load->view('signup.php',$data);
+    }
+
+    public function login() {
+        $this->load->view('template/login_header.php');
+        $this->load->view('template/login_body.php');
+        $this->load->view('template/login_footer.php');
     }
 
 }

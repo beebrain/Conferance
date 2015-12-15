@@ -25,17 +25,14 @@ class Welcome extends CI_Controller {
         $this->phpmailer->AddAddress('mynameisbee@uru.ac.th', "Fucyber"); //อีกเมล์ผู้รับ  สามารถเพิ่มได้มากกว่า 1
         //  $this->phpmailer->AddAttachment("images/phpmailer.gif");      // การแนบไฟล์ถ้าต้องการ สามารถเพิ่มได้มากกว่า 1 เช่นกันครับ
         //   $this->phpmailer->AddAttachment("images/phpmailer_mini.gif"); // ตัวอย่างการพิ่มได้มากกว่า 1
-        for ($i = 0; $i < 30; $i++) {
+       
             if (!$this->phpmailer->Send()) {
                 $data["message"] = "Error: " . $this->phpmailer->ErrorInfo;
             } else {
                 $data["message"] = "ส่งอีเมล์สำเร็จ!";
             }
-            //$this->load->view('sent_mail', $data);
-            echo $i;
             print_r($data);
             sleep(10);
-        }
     }
 
 }

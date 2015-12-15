@@ -1,4 +1,5 @@
 
 RewriteEngine on
 RewriteCond $1 !^(index\.php|asserts|images|css|upload|fonts|js|robots\.txt)
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteRule ^([^/]+)/?$ index.php?page=$1 [L,QSA]
+

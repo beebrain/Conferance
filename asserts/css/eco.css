@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+//@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -129,11 +129,11 @@ header .navbar-default.scrolled {
     transition: all 0.25s ease-in-out;
 }
 header .navbar-default.scrolled .navbar-brand {
-    padding: 15px 20px;
+    padding: 5px 5px;
 }
 header .navbar-default.scrolled .navbar-brand img {
     width: auto;
-    max-height: 33px;
+    max-height: 50px;
 }
 header .navbar-default.scrolled ul.navbar-nav {
     padding-top: 15px;
@@ -186,16 +186,16 @@ header .navbar-default.scrolled ul.navbar-nav {
 .section-heading.inverse .divider:after {
     background: #ffffff;
 }
-section#about {
+section.about {
     position: relative;
 }
-section#about .about-item {
+section.about .about-item {
     text-align: center;
     font-size: 17px;
     line-height: 25px;
     color: #999999;
 }
-section#about .about-item i.fa {
+section.about .about-item i.fa {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -209,10 +209,10 @@ section#about .about-item i.fa {
     transition: all 0.25s ease-in-out;
     width: 104px;
 }
-section#features .media > .pull-right {
+section.features .media > .pull-right {
     margin-left: 20px;
 }
-section#features .media i.fa {
+section.features .media i.fa {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -227,38 +227,38 @@ section#features .media i.fa {
     width: 2.6em;
     text-align: center;
 }
-section#features .media .media-heading {
+section.features .media .media-heading {
     padding-top: 10px;
     font-weight: 300;
 }
-section#features .media .media-body {
+section.features .media .media-body {
     color: #999999;
 }
-section#features .media.media-left .media-body {
+section.features .media.media-left .media-body {
     text-align: right;
 }
-section#features .media.feature {
+section.features .media.feature {
     margin-top: 25px;
 }
-section#features .media.feature:first-child {
+section.features .media.feature:first-child {
     margin-top: 0;
 }
-section#features img {
+section.features img {
     margin: 0 auto 20px;
 }
-section#reviews {
+section.reviews {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
-section#reviews .review-filtering {
+section.reviews .review-filtering {
     margin: 20px 0 100px 0;
 }
-section#reviews .review-filtering .review .review-person {
+section.reviews .review-filtering .review .review-person {
     width: 100%;
 }
-section#reviews .review-filtering .review .review-person img {
+section.reviews .review-filtering .review .review-person img {
     width: 110px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -267,7 +267,7 @@ section#reviews .review-filtering .review .review-person img {
     border-radius: 50%;
     margin: 10px auto;
 }
-section#reviews .review-filtering .review .review-comment {
+section.reviews .review-filtering .review .review-comment {
     width:100%;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -277,17 +277,17 @@ section#reviews .review-filtering .review .review-comment {
     padding: 5px 40px 20px;
     position: relative;
 }
-section#reviews .review-filtering .review .review-comment h3 {
+section.reviews .review-filtering .review .review-comment h3 {
     margin-bottom: 15px;
 }
-section#reviews .review-filtering .review .review-comment p {
+section.reviews .review-filtering .review .review-comment p {
     font-size: 16px;
     color: #999999;
 }
-section#reviews .review-filtering .review .review-comment p span {
+section.reviews .review-filtering .review .review-comment p span {
     margin-left: 10px;
 }
-section#reviews .review-filtering .review .review-comment:after {
+section.reviews .review-filtering .review .review-comment:after {
     right: 100%;
     top: 50%;
     border: solid transparent;
@@ -300,27 +300,27 @@ section#reviews .review-filtering .review .review-comment:after {
     border-width: 15px;
     margin-top: -10px;
 }
-section#reviews .review-filtering .review .review-person,
-section#reviews .review-filtering .review .review-comment {
+section.reviews .review-filtering .review .review-person,
+section.reviews .review-filtering .review .review-comment {
     float: left;
 }
-section#reviews .review-filtering .slick-dots {
+section.reviews .review-filtering .slick-dots {
     bottom: -80px;
 }
-section#reviews .review-filtering .slick-dots li button {
+section.reviews .review-filtering .slick-dots li button {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
 }
-section#reviews .review-filtering .slick-dots li button:before {
+section.reviews .review-filtering .slick-dots li button:before {
     display: none;
 }
-section#screens .slider {
+section.screens .slider {
     margin: 50px 0;
 }
-section#screens .slider div img {
+section.screens .slider div img {
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
@@ -329,35 +329,35 @@ section#screens .slider div img {
     padding: 10px;
     display: inline;
 }
-section#screens .slider div h4 {
+section.screens .slider div h4 {
     text-align: center;
     margin-top: 40px;
     font-size: 16px;
 }
-section#screens .slider .slick-dots li button {
+section.screens .slider .slick-dots li button {
     -webkit-border-radius: 5em;
     -moz-border-radius: 5em;
     -ms-border-radius: 5em;
     -o-border-radius: 5em;
     border-radius: 5em;
 }
-section#screens .slick-prev,
-section#screens .slick-next {
+section.screens .slick-prev,
+section.screens .slick-next {
     width: 50px;
     height: 50px;
     top: 44%;
 }
-section#screens .slick-slide {
+section.screens .slick-slide {
     text-align: center;
 }
-section#screens .slick-prev:before {
+section.screens .slick-prev:before {
     content: "\f104";
 }
-section#screens .slick-next:before {
+section.screens .slick-next:before {
     content: "\f105";
 }
-section#screens .slick-prev:before,
-section#screens .slick-next:before {
+section.screens .slick-prev:before,
+section.screens .slick-next:before {
     font-size: 34px;
     -webkit-border-radius: 5em;
     -moz-border-radius: 5em;
@@ -372,10 +372,10 @@ section#screens .slick-next:before {
     height: 50px;
     text-align: center;
 }
-section#screens .filter {
+section.screens .filter {
     text-align: center;
 }
-section#screens .filter a {
+section.screens .filter a {
     display: inline-block;
     padding: 7px 20px;
     text-decoration: none;
@@ -393,41 +393,42 @@ section#screens .filter a {
     transition: all 0.25s ease-in-out;
 }
 /* demo video Section */
-section#demo .video-container {
+section.demo .video-container {
     padding: 20px;
     border: 1px solid #b3b3b3;
     min-height: 450px;
     overflow: hidden;
 }
-section#demo iframe {
+section.demo iframe {
     width: 100%;
     height: 100%;
     border: none;
 }
 /* Get app Section */
-section#getApp {
+section.getApp {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     padding: 70px 0;
+    padding-bottom: 250px;
 }
-section#getApp .platforms {
+section.getApp .platforms {
     margin: 5px auto 120px auto;
     text-align: center;
 }
-section#getApp .platforms .btn {
+section.getApp .platforms .btn {
     margin-right: 10px;
     margin-bottom: 20px;
 }
 /* support section */
-section#support {
+section.support {
     padding: 0 0 150px 0;
 }
-section#support .media {
+section.support .media {
     margin-bottom: 10px;
 }
-section#support .media i.fa {
+section.support .media i.fa {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -442,11 +443,11 @@ section#support .media i.fa {
     width: 1.9em;
     text-align: center;
 }
-section#support .media .media-heading {
+section.support .media .media-heading {
     padding-top: 15px;
     font-weight: 300;
 }
-section#support .media .media-heading a {
+section.support .media .media-heading a {
     font-weight: 400;
 }
 /* footer section */
@@ -703,6 +704,22 @@ header {
     /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66cc99, endColorstr=#339999, GradientType=1);
     /* IE6-9 fallback on horizontal gradient */
+
+    background-image: url('../img/img2.jpg');
+    color: #ffffff;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    background-attachment: relative;
+    background-position: center center;
+
 }
 header .navbar-default ul.navbar-nav li a {
     color: #ffffff;
@@ -777,151 +794,151 @@ header .navbar-default.scrolled .navbar-brand {
 section .section-heading .divider:after {
     background: #66cc99;
 }
-section#about .about-item i.fa {
+section.about .about-item i.fa {
     border: 2px solid #66cc99;
     color: #66cc99;
 }
-section#about .about-item:hover i.fa {
+section.about .about-item:hover i.fa {
     color: #ffffff;
     background: #66cc99;
 }
-section#about .about-item:hover h3 {
+section.about .about-item:hover h3 {
     color: #66cc99;
 }
-section#features {
+section.features {
     background: #f6f6f6;
 }
-section#features header h1:after {
+section.features header h1:after {
     background: #66cc99;
 }
-section#features .media i.fa {
+section.features .media i.fa {
     border: 2px solid #66cc99;
     color: #66cc99;
 }
-section#features .media:hover i.fa {
+section.features .media:hover i.fa {
     color: #ffffff;
     background: #66cc99;
 }
-section#features .media:hover h3 {
+section.features .media:hover h3 {
     color: #66cc99;
 }
-section#features .media.active i.fa {
+section.features .media.active i.fa {
     color: #ffffff;
     background: #66cc99;
 }
-section#features .media.active .media-heading {
+section.features .media.active .media-heading {
     color: #66cc99;
 }
-section#reviews {
+section.reviews {
     background: url("../img/eco/bk-eco.jpg");
 }
-section#reviews header {
+section.reviews header {
     color: #ffffff;
 }
-section#reviews header h1:after {
+section.reviews header h1:after {
     background: #ffffff;
 }
-section#reviews .review-filtering .review .review-person img {
+section.reviews .review-filtering .review .review-person img {
     border: 3px solid #ffffff;
 }
-section#reviews .review-filtering .review .review-comment {
+section.reviews .review-filtering .review .review-comment {
     background: #ffffff;
 }
-section#reviews .review-filtering .review .review-comment h3 {
+section.reviews .review-filtering .review .review-comment h3 {
     color: #66cc99;
 }
-section#reviews .review-filtering .review .review-comment p span i {
+section.reviews .review-filtering .review .review-comment p span i {
     color: #66cc99;
 }
-section#reviews .review-filtering .review .review-comment:after {
+section.reviews .review-filtering .review .review-comment:after {
     border-right-color: #ffffff;
 }
-section#reviews .review-filtering .slick-dots li button {
+section.reviews .review-filtering .slick-dots li button {
     background: #ffffff;
     border: 2px solid #ffffff;
 }
-section#reviews .review-filtering .slick-dots li.slick-active button {
+section.reviews .review-filtering .slick-dots li.slick-active button {
     background: #66cc99;
 }
-section#screens header h1:after {
+section.screens header h1:after {
     background: #66cc99;
 }
-section#screens .slider div img {
+section.screens .slider div img {
     border: 2px solid #e5e5e5;
 }
-section#screens .slider div h4 {
+section.screens .slider div h4 {
     color: #999999;
 }
-section#screens .slider .slick-dots li button {
+section.screens .slider .slick-dots li button {
     background: #999999;
 }
-section#screens .slider .slick-dots li.slick-active button {
+section.screens .slider .slick-dots li.slick-active button {
     background: #66cc99;
 }
-section#screens .filter a {
+section.screens .filter a {
     border: 2px solid #cccccc;
     color: #999999;
 }
-section#screens .filter a:hover {
+section.screens .filter a:hover {
     color: #ffffff;
     background: #66cc99;
     border-color: #66cc99;
 }
-section#screens .filter a.active {
+section.screens .filter a.active {
     color: #ffffff;
     background: #66cc99;
     border-color: #66cc99;
 }
 /* demo video Section */
-section#demo {
+section.demo {
     background: #f6f6f6;
 }
-section#demo header h1:after {
+section.demo header h1:after {
     background: #66cc99;
 }
 /* Get app Section */
-section#getApp {
-    background: url("../img/eco/bk-eco-ga.jpg");
+section.getApp {
+    background: linear-gradient(-45deg, #fffff0 0%, #339999 100%);
 }
-section#getApp header {
+section.getApp header {
     color: #ffffff;
 }
-section#getApp header h1:after {
+section.getApp header h1:after {
     background: #ffffff;
 }
-section#getApp .platforms .media {
+section.getApp .platforms .media {
     border: 2px solid #ffffff;
     color: #ffffff;
 }
-section#getApp .platforms .media a i {
+section.getApp .platforms .media a i {
     color: #ffffff;
 }
-section#getApp .platforms .media a div.media-body {
+section.getApp .platforms .media a div.media-body {
     color: #ffffff;
 }
-section#getApp .platforms .media:hover {
+section.getApp .platforms .media:hover {
     background: #ffffff;
 }
-section#getApp .platforms .media:hover a i,
-section#getApp .platforms .media:hover a div.media-body {
+section.getApp .platforms .media:hover a i,
+section.getApp .platforms .media:hover a div.media-body {
     color: #66cc99;
 }
 /* support section */
-section#support header h1:after {
+section.support header h1:after {
     background: #66cc99;
 }
-section#support .media i.fa {
+section.support .media i.fa {
     border: 2px solid #66cc99;
     color: #66cc99;
 }
-section#support .media a {
+section.support .media a {
     color: #66cc99;
 }
-section#support .media:hover i.fa {
+section.support .media:hover i.fa {
     color: #ffffff;
     background: #66cc99;
 }
-section#support .media:hover h3 {
+section.support .media:hover h3 {
     color: #66cc99;
 }
 /* footer section */

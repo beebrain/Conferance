@@ -1,20 +1,20 @@
 <footer>
-            <div class="container">
-                <a href="#" class="scrollpoint sp-effect3">
-                    <img src="<?php echo base_url('asserts/img/eco/logo.png') ?>" alt="" class="logo">
-                </a>
-                <div class="social">
-                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-twitter fa-lg"></i></a>
-                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-google-plus fa-lg"></i></a>
-                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-facebook fa-lg"></i></a>
-                </div>
-                <div class="rights">
-                    <p>Copyright &copy; 2014</p>
-                    <p>Template by <a href="http://www.scoopthemes.com" target="_blank">ScoopThemes</a></p>
-                </div>
-            </div>
-        </footer>
-   
+    <div class="container">
+
+        <div class="rights">
+            <p>The Secretariat of URUICST2016,
+                Faculty of Science and Technology,
+                UttaraditRajabhat University,
+                Uttaradit, Thailand 53000,
+                Tel: +66-55 411096 ext. 1338, +66-81 8812099
+                Fax: +66-55 411096 ext. 1312
+                E-mail: secretary_scit2016@uru.ac.th
+                Website: http://sci.uru.ac.th
+            </p>
+        </div>
+    </div>
+</footer>
+
 </body>
 
 </html>
