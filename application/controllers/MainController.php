@@ -5,9 +5,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MainController extends CI_Controller {
 
     public function index() {
+        $this->load->model('user');
+        $member = $this->user->getuser()->result();
+        $data['member'] = $member;
+        
         $this->load->view('template/head.php');
         $this->load->view('template/nav.php');
-        $this->load->view('index.php');
+        $this->load->view('index.php',$data);
         $this->load->view('template/footer.php');
     }
 

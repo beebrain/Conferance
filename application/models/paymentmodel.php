@@ -12,6 +12,11 @@ class paymentmodel extends CI_Model {
         return $insert_id;
     }
 
+    public function update($condition,$data) {
+        $this->db->where($condition);
+        $this->db->update('payment', $data);
+    }
+
     public function searchPayment($data = null) {
         if ($data <> null) {
             $this->db->where($data);

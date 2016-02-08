@@ -20,37 +20,15 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td  style="width: 70%"><label>Abstract Submission</label>
-                                            <p>This section for submit your abstract.</p>
-                                    </td>
-                                    <td class="text-center"><label><?php
-                                            if ($abstract == null) {
-                                                echo "unSubmit";
-                                            } elseif ($abstract->status == '0') {
-                                                echo "waiting for revision";
-                                            } elseif ($abstract->status == '1') {
-                                                echo "Approved";
-                                            }
-                                            ?>
-                                        </label>
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td  style="width: 70%"><label>Full paper Submission</label>
                                         <p>This section you should submit full paper to reviewer</p>
-                                        <p>if you select public with fullpaper you must pay for fullpaper.</p>
+                                   
                                     </td>
                                     <td class="text-center"><label><?php
                                             if ($paper == null) {
                                                 echo "N/A";
-                                            } elseif ($paper->status == '0') {
-                                                echo "waiting for revision";
-                                            } elseif ($paper->status == '1') {
-                                                echo "Please Resubmit";
-                                            } elseif ($paper->status == '2') {
-                                                echo "Approved";
-                                            } else {
-                                                echo "Not accepted for journal";
+                                            } else{
+                                                echo "Accept";
                                             }
                                             ?>
                                         </label></td>
@@ -63,11 +41,11 @@
                                             if ($payment == null) {
                                                 echo "N/A";
                                             } elseif ($payment->status == '0') {
-                                                echo "Checking";
+                                                echo "Recieved Order";
                                             } elseif ($payment->status == '1') {
-                                                echo "Approved";
-                                            }  else {
-                                                echo "Please Resubmit payment ";
+                                                echo "Checking payment document";
+                                            }  elseif ($payment->status == '2') {
+                                                echo "Thank you for payment";
                                             }
                                             ?>
                                         </label></td>

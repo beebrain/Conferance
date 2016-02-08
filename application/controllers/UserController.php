@@ -9,18 +9,18 @@ class UserController extends CI_Controller {
         $data = $this->input->post();
         $recaptcha = $data["g-recaptcha-response"];
         $response = $this->recaptcha->verifyResponse($recaptcha);
-
         if (!isset($response['success']) || $response['success'] <> true) {
             $messageData["info"] = "Robot";
         } else {
-
             unset($data['g-recaptcha-response']);
             $this->load->model('user');
-            if (!$this->user->checkDupUser($data['email'])) {
+            if (!$this->user->checkDupUser(strtolower($data['email']))) {
+                $email = $data['email'];
+                $data['email'] = strtolower($data['email']);
                 $messageData["info"] = "success";
                 $this->user->register($data);
                 $this->load->model('sendmail');
-                $this->sendmail->confirmUser($data['email'], $data['password']);
+                $this->sendmail->confirmUser($email, $data['password']);
             } else { // duplicate user
                 $messageData["info"] = "Duplicate User";
             }
@@ -34,7 +34,6 @@ class UserController extends CI_Controller {
         $user_data = $this->user->getuser($data['user_id']);
         $user_data = $user_data->result();
         $user_data = $user_data[0];
-
         $data["password"] = $user_data->password;
         $this->user->updateUser($data);
         redirect(base_url('index.php/UserPanel/profile'));
@@ -49,9 +48,46 @@ class UserController extends CI_Controller {
         $user_data = $this->session->userdata('user_data');
         $data = $this->input->post();
 
+        $datainsert["user_id"] = $user_data["user_id"];
+        $datainsert["address"] = $data["address_pay"];
+        $datainsert["submit_date"] =  date("Y-m-d h:i:s A");
+        $datainsert["status"] = 0;
+
+        if ($data["student"] == 'S') {
+            $datainsert["student"] = "Student";
+        } else {
+            $datainsert["student"] = "Regular";
+        }
+
+        if ($data["nation"] == 'T') {
+            $datainsert["nation"] = "Thai";
+            $datainsert["totalpay"] = $data["totalpay"] . " B";
+        } else {
+            $datainsert["nation"] = "Foreigner";
+            $datainsert["totalpay"] = "$ " . $data["totalpay"];
+        }
+
+        $this->load->model('paymentmodel');
+        $pay_id = $this->paymentmodel->insert($datainsert);
+
+        if (sizeof($data["follower"]) > 0) {
+            $this->load->model('followermodel');
+            $datafollower["pay_id"] = $pay_id;
+            foreach ($data["follower"] as $key => $value) {
+                $datafollower["follower_name"] = $value;
+                $this->followermodel->insert($datafollower);
+            }
+        }
+        redirect(base_url('index.php/UserPanel/payment'));
+    }
+
+    public function paymentComfirm() {
+        $user_data = $this->session->userdata('user_data');
+        $data = $this->input->post();
+        
 
         $config['upload_path'] = "upload/pay";
-        $config['allowed_types'] = "jpg|gif|png|doc|docx|pdf|xlsx|xls|txt";
+        $config['allowed_types'] = "jpg|gif|png|pdf";
         $config['max_size'] = 2048;
         $config['file_name'] = $user_data['user_id'] . "_payment";
         $config['encrypt_name'] = 'true';
@@ -67,7 +103,7 @@ class UserController extends CI_Controller {
             $info['statis'] = "error";
         }
 
-        if ($data["student"] == "S") {
+        if ($data["student"] == "Student") {
             $config['file_name'] = $user_data['user_id'] . "_student";
             $this->upload->initialize($config);
             // Upload student
@@ -78,99 +114,37 @@ class UserController extends CI_Controller {
                 $info['statis'] = "error";
             }
         }
+        
 
         $datainsert["user_id"] = $user_data["user_id"];
-        $datainsert["payment_link"] = base_url('/upload/pay/') . "/" . $data_payment["file_name"];
-        //print_r($data_payment);
-        $datainsert["address"] = $data["address_pay"];
+        $datainsert["payment_link"] = "/upload/pay/" . $data_payment["file_name"];
 
-        $datainsert["date"] = $data["datePay"];
-        $datainsert["status"] = 0;
-        if ($data["student"] == 'S') {
-            $datainsert["student"] = "Student";
-            $datainsert["student_link"] = base_url('/upload/pay/') . "/" . $data_student["file_name"];
-        } else {
-            $datainsert["student"] = "Non Student";
-        }
 
-        if ($data["nation"] == 'T') {
-            $datainsert["nation"] = "Thai";
-            $datainsert["totalpay"] = $data["totalpay"] . " B";
-        } else {
-            $datainsert["nation"] = "Foreigner";
-            $datainsert["totalpay"] = "$ " . $data["totalpay"];
-        }
+        $datainsert["confirm_date"] = $data["datePay"]." ".$data["time"];
+        $datainsert["status"] = 1;
+        if ($data["student"] != "Regular") {
+            $datainsert["student_link"] = "/upload/pay/" . $data_student["file_name"];
+        } 
+
+
         $this->load->model('paymentmodel');
-        $pay_id = $this->paymentmodel->insert($datainsert);
+        
+        $condition["user_id"] = $user_data["user_id"];
+        $condition["status"] = "0";
+        $this->paymentmodel->update($condition,$datainsert);
 
-        if (sizeof($data["follower"]) > 0) {
-            $this->load->model('followermodel');
-            $datafollower["pay_id"] = $pay_id;
-            foreach ($data["follower"] as $key => $value) {
-                $datafollower["follower_name"] = $value;
-                $this->followermodel->insert($datafollower);
-            }
-        }
         redirect(base_url('index.php/UserPanel/payment'));
-    }
-
-    /**
-     * Submit paper function
-     */
-    public function submitAbstract() {
-        $user_data = $this->session->userdata('user_data');
-        $data = $this->input->post();
-        $name = $data["participation_type"] . $data["field_type"] . $user_data["user_id"];
-
-        $this->load->model('paper_abstract');
-
-        $config['upload_path'] = "upload/";
-        $config['allowed_types'] = "jpg|gif|png|doc|docx|pdf|xlsx|xls|txt";
-        $config['max_size'] = 2048;
-        $config['file_name'] = $name . "_abstract";
-        $config['encrypt_name'] = 'true';
-        $config['remove_spaces'] = 'true';
-
-        $this->load->library("upload");
-        $this->upload->initialize($config);
-        $info['status'] = "success";
-        // Upload abstract
-        if ($this->upload->do_upload("abstract")) {
-            $data_ab = $this->upload->data();
-        } else {
-            $info['data'] = $this->upload->display_error();
-            $info['statis'] = "error";
-        }
-        $data_insert['article_code'] = 0;
-        $data_insert["abstract_link"] = base_url('upload/' . $data_ab["file_name"]);
-        $data_insert["paper_title"] = $data["paper_title"];
-        $data_insert["field_type"] = $data["field_type"];
-        $data_insert["participation_type"] = $data["participation_type"];
-        $data_insert["user_id"] = $user_data["user_id"];
-        $data_insert["status"] = 1;
-
-        $id_paper = $this->paper_abstract->insert($data_insert);
-        $data_insert['article_code'] = $data["participation_type"] . $data["field_type"] . $id_paper;
-        $this->paper_abstract->update($data_insert);
-
-        redirect(base_url('index.php/UserPanel/AbArticle'));
     }
 
     public function submitPaper() {
         $user_data = $this->session->userdata('user_data');
         $this->load->model('user');
-        $this->load->model('paper_abstract');
         $this->load->model('paper');
 
         $data = $this->input->post();
-        $result = $this->user->getuser($user_data['user_id']);
+        $result = $this->user->getUser($user_data['user_id']);
         $data_user = $result->result();
         $data_user = $data_user[0];
-
-        $citeria["user_id"] = $data_user->user_id;
-        $result = $this->paper_abstract->viewAbstract($citeria);
-        $data_abstract = $result[0];
-        $abstract_id = $data_abstract->abstract_id;
 
 
         $config['upload_path'] = "upload/";
@@ -181,38 +155,95 @@ class UserController extends CI_Controller {
 
         $this->load->library("upload");
         $this->upload->initialize($config);
-        $info['status'] = "success";
-
-
+        // $info['status'] = "success";
         // Upload abstract
         if ($this->upload->do_upload("paper")) {
-            $data_ab = $this->upload->data();
+            $data_fp = $this->upload->data();
+
+            $data_insert['user_id'] = $data_user->user_id;
+            $data_insert["field_type"] = $data["field_type"];
+            $data_insert['paper_title'] = $data['paper_title'];
+            $data_insert["paper_link"] = $data_fp["file_name"];
+            $data_insert["status"] = 0;
+            $this->paper->insert($data_insert);
+            $id_paper = $this->db->insert_id();
+            
+            $id_field = $this->paper->getIdfield($data["field_type"]);
+            // Update Article_code
+            $data_insert["article_code"] = $data_user->participation . $data["field_type"] .$id_paper."-".$this->fullIdArtic($id_field);
+
+            $condition["paper_id"] = $id_paper;
+            $this->paper->update($condition, $data_insert);
         } else {
             // echo $this->upload->display_error();
             // $info['statis'] = "error";
         }
 
-
-        $data_insert['abstract_id'] = $abstract_id;
-        $data_insert["paper_link"] = base_url('upload/' . $data_ab["file_name"]);
-        $data_insert["paper_type"] = $data["paper_type"];
-        $data_insert["status"] = 0;
-
-        $id_paper = $this->paper->insert($data_insert);
         redirect(base_url('index.php/UserPanel/fullArticle'));
+    }
+
+    public function UpdatePaper() {
+        $user_data = $this->session->userdata('user_data');
+        $this->load->model('user');
+        $this->load->model('paper');
+
+        $data = $this->input->post();
+        $result = $this->user->getUser($user_data['user_id']);
+        $data_user = $result->result();
+        $data_user = $data_user[0];
+
+
+        $config['upload_path'] = "upload/";
+        $config['allowed_types'] = "jpg|gif|png|doc|docx|pdf|xlsx|xls|txt";
+        $config['max_size'] = 2048;
+        $config['file_name'] = $data_user->user_id . "_paper";
+        $config['encrypt_name'] = 'true';
+
+        $this->load->library("upload");
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload("paper")) {
+            $data_fp = $this->upload->data();
+
+            $data_insert['user_id'] = $data_user->user_id;
+            $data_insert['paper_title'] = $data['paper_title'];
+            $data_insert["paper_link"] = $data_fp["file_name"];
+            $data_insert["status"] = 0;
+
+            $condition['user_id'] = $data_user->user_id;
+            $this->paper->update($condition, $data_insert);
+        } else {
+            // echo $this->upload->display_error();
+            // $info['statis'] = "error";
+        }
+
+        redirect(base_url('index.php/UserPanel/fullArticle'));
+    }
+
+    public function fullIdArtic($id) {
+        $ida = $id;
+        for ($i = 1000; $i >= $ida; $i = $i / 10) {
+            $id = "0" . $id;
+        }
+        return $id;
     }
 
     public function confirmUser($code) {
         $email = base64_decode($code);
+
         $this->load->model('user');
-        $citeria["email"] = $email;
-        $citeria["status"] = 1;
+        $citeria["email"] = strtolower($email);
+
+        $citeria["status"] = '1';
+        //print_r($citeria);
         $result = $this->user->activate($citeria);
-        redirect(base_url('index.php/MainController/index/#login'));
+        $this->load->view('Activate');
+        //redirect(base_url('index.php/MainController/index/#login'));
     }
 
     public function login() {
         $data = $this->input->post();
+        $data['email'] = strtolower($data['email']);
         $this->load->model('user');
         $user_data = $this->user->checkuser($data['email'], $data['password']);
         if ($user_data <> NULL) {
@@ -227,6 +258,10 @@ class UserController extends CI_Controller {
 
     public function logout() {
         $this->session->sess_destroy();
+        redirect(base_url('index.php/MainController/index/#login'));
+    }
+
+    public function forgotPass() {
         redirect(base_url('index.php/MainController/index/#login'));
     }
 

@@ -12,7 +12,7 @@ class paper extends CI_Model {
         return $insert_id;
     }
 
-    public function update($condition,$data) {
+    public function update($condition, $data) {
         $this->db->where($condition);
         $this->db->update('paper', $data);
         return $this->db->affected_rows();
@@ -26,6 +26,17 @@ class paper extends CI_Model {
         $query = $this->db->get('paper_view');
 
         return $query->result();
+    }
+
+    public function getField() {
+        $query = $this->db->get("field");
+        return $query->result();
+    }
+
+    public function getIdfield($field) {
+        $this->db->where('field_type', $field);
+        $this->db->from('paper');
+        return  $this->db->count_all_results();
     }
 
 }

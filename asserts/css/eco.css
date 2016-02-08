@@ -44,8 +44,8 @@ h6,
 header .navbar-default {
     background: none;
     border: none;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 2px;
     -webkit-transition: all 0.25s ease-in-out;
     -moz-transition: all 0.25s ease-in-out;
     -ms-transition: all 0.25s ease-in-out;
@@ -53,13 +53,13 @@ header .navbar-default {
     transition: all 0.25s ease-in-out;
 }
 header .navbar-default ul.navbar-nav {
-    padding-top: 55px;
+    padding-top: 10px;
 }
 header .navbar-default ul.navbar-nav li a {
     text-transform: capitalize;
     font-weight: 400;
     font-size: 16px;
-    padding: 7px 20px;
+    padding: 7px 15px;
     -webkit-transition: all 0.25s ease-in-out;
     -moz-transition: all 0.25s ease-in-out;
     -ms-transition: all 0.25s ease-in-out;
@@ -259,7 +259,7 @@ section.reviews .review-filtering .review .review-person {
     width: 100%;
 }
 section.reviews .review-filtering .review .review-person img {
-    width: 110px;
+    width: 250px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -411,7 +411,7 @@ section.getApp {
     -o-background-size: cover;
     background-size: cover;
     padding: 70px 0;
-    padding-bottom: 250px;
+    padding-bottom: 70px;
 }
 section.getApp .platforms {
     margin: 5px auto 120px auto;
@@ -421,6 +421,26 @@ section.getApp .platforms .btn {
     margin-right: 10px;
     margin-bottom: 20px;
 }
+
+/* Get app Section */
+section.getApp2 {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 70px 0;
+    padding-bottom: 70px;
+}
+section.getApp2 .platforms {
+    margin: 5px auto 120px auto;
+    text-align: center;
+}
+section.getApp2 .platforms .btn {
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+
 /* support section */
 section.support {
     padding: 0 0 150px 0;
@@ -830,7 +850,7 @@ section.features .media.active .media-heading {
     color: #66cc99;
 }
 section.reviews {
-    background: url("../img/eco/bk-eco.jpg");
+    background: #F8F8F8;
 }
 section.reviews header {
     color: #ffffff;
@@ -898,7 +918,7 @@ section.demo header h1:after {
 }
 /* Get app Section */
 section.getApp {
-    background: linear-gradient(-45deg, #fffff0 0%, #339999 100%);
+    background: linear-gradient(-45deg, #fffff0 0%, #FAFAFA 100%);
 }
 section.getApp header {
     color: #ffffff;
@@ -921,6 +941,34 @@ section.getApp .platforms .media:hover {
 }
 section.getApp .platforms .media:hover a i,
 section.getApp .platforms .media:hover a div.media-body {
+    color: #66cc99;
+}
+
+/* Get app2 Section */
+section.getApp2 {
+    background: linear-gradient(-45deg, #0BAE90 0%, #FAFAFA 100%)
+}
+section.getApp2 header {
+    color: #ffffff;
+}
+section.getApp2 header h1:after {
+    background: #ffffff;
+}
+section.getApp2 .platforms .media {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+section.getApp2 .platforms .media a i {
+    color: #ffffff;
+}
+section.getApp2 .platforms .media a div.media-body {
+    color: #ffffff;
+}
+section.getApp2 .platforms .media:hover {
+    background: #ffffff;
+}
+section.getApp2 .platforms .media:hover a i,
+section.getApp2 .platforms .media:hover a div.media-body {
     color: #66cc99;
 }
 /* support section */

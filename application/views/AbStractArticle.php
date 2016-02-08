@@ -34,7 +34,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Abstract</label>
+                                            <label>Abstract (File types:.doc, .docx)</label>
                                             <div class="controls">
                                                 <input type="file" value="Browse" name="abstract" id="abstract" >
                                             </div>
@@ -48,10 +48,10 @@
                                                 <div class="controls">
                                                     <select class="form-control" id="field_type" name="field_type">
                                                         <option value=""><p>Please select Topic</p></option>
-                                                        <option value="P"><p>Physical Science</p></option>
-                                                        <option value="B"><p>Biological Science </p></option>
+                                                        <option value="P"><p>Pure Sciences</p></option>
+                                                        <option value="A"><p>Applied Sciences</p></option>
                                                         <option value="H"><p>Health Science</p></option>
-                                                        <option value="C"><p>Computer and Information Technology</p></option>
+ 
                                                     </select>
                                                 </div>
                                             </div>

@@ -28,18 +28,13 @@ class UserPanel extends CI_Controller {
         $data_result["paper"] = null;
         $data_result["payment"] = null;
 
-        if ($result = $this->paper_abstract->viewAbstract($citeria)) {
-            $abstract = $result[0];
-            $data_result["abstract"] = $abstract;
-            $this->load->model('paper');
 
-            $condition["abstract_id"] = $abstract->abstract_id;
-
-            if ($result = $this->paper->viewPaper($condition)) {
-                $paper_detail = $result[0];
-                $data_result["paper"] = $paper_detail;
-            }
+        $this->load->model('paper');
+        if ($result = $this->paper->viewPaper($citeria)) {
+            $paper_detail = $result[0];
+            $data_result["paper"] = $paper_detail;
         }
+
         $this->load->model('paymentmodel');
         if ($datapayment = $this->paymentmodel->searchPayment($citeria)) {
             $datapayment = $datapayment[0];
@@ -83,27 +78,24 @@ class UserPanel extends CI_Controller {
 
     public function fullArticle() {
         $this->load->model('user');
-        $this->load->model('paper_abstract');
-        $result = $this->user->getuser($this->user_login['user_id']);
+        $this->load->model('paper');
+        $result = $this->user->getUserView($this->user_login['user_id']);
         $data = $result->result();
         $data_user = $data[0];
 
         $citeria["user_id"] = $data_user->user_id;
-        $result = $this->paper_abstract->viewAbstract($citeria);
-        $data_result["paticipation"] = null;
         $data_result["paper"] = null;
-        if ($result <> null) {
-            $paticipation = $result[0];
-            $data_result["paticipation"] = $paticipation;
-            $this->load->model('paper');
-            $condition["abstract_id"] = $paticipation->abstract_id;
-            $result = $this->paper->viewPaper($condition);
-            if ($result <> null) {
-                $paper_detail = $result[0];
-                $data_result["paper"] = $paper_detail;
-            }
-        }
 
+        $this->load->model('paper');
+        $result = $this->paper->viewPaper($citeria);
+        if ($result <> null) {
+            $paper_detail = $result[0];
+            $data_result["paper"] = $paper_detail;
+        }
+        $result = $this->paper->getField();
+        $field = $result;
+        $data_result["field"] = $field;
+        $data_result["user"] = $data_user;
         $this->load->view('template/login_header.php');
         $this->load->view('full_Article.php', $data_result);
         $this->load->view('template/login_footer.php');
@@ -111,14 +103,14 @@ class UserPanel extends CI_Controller {
 
     public function listArticle() {
         $this->load->model('user');
-        $this->load->model('paper_abstract');
+        $this->load->model('paper');
         $result = $this->user->getuser($this->user_login['user_id']);
         $data = $result->result();
         $data_user = $data[0];
-        $result = $this->paper_abstract->viewAbstract();
-        $data_result["abstract"] = null;
+        $result = $this->paper->viewPaper();
+        $data_result["paper"] = null;
         if ($result <> null) {
-            $data_result["abstract"] = $result;
+            $data_result["paper"] = $result;
         }
 
 
@@ -137,22 +129,40 @@ class UserPanel extends CI_Controller {
         $this->load->model('paymentmodel');
         $this->load->model('followermodel');
 
-        $citeria['user_id'] = $user_data->user_id;
+
         $all_data['payment_data'] = null;
         $all_data['follower_data'] = null;
-        if ($datapayment = $this->paymentmodel->searchPayment($citeria)) {
+
+        $citeria['user_id'] = $user_data->user_id;
+       // $citeria['status'] = '0';
+        $page = "payment.php";
+        if ($datapayment = $this->paymentmodel->getpayment($citeria)) {
             $datapayment = $datapayment[0];
 
-            $condition['pay_id'] = $datapayment->pay_id;
-            $datafollower = $this->followermodel->searchfollower($condition);
+            $day1 = strtotime($datapayment->submit_date);
+            $day2 = strtotime(date("Y-m-d H:i:s A"));
+            $cal24 =  $day2-$day1;
 
-            $all_data['payment_data'] = $datapayment;
-            $all_data['follower_data'] = $datafollower;
+            if ($datapayment->status <= '0' && $cal24 > (48*60*60)) {
+                $dataup['status'] = '-1';
+                $this->paymentmodel->update($citeria, $dataup);
+                $page = "payment.php";
+            } else {
+                $condition['pay_id'] = $datapayment->pay_id;
+                $resultFollow = $this->followermodel->searchfollower($condition);
+                $all_data['payment_data'] = $datapayment;
+                $all_data['follower_data'] = $resultFollow;
+                $page = "comfirmpayment.php";
+            }
         }
 
         $this->load->view('template/login_header.php');
-        $this->load->view('payment.php', $all_data);
+        $this->load->view($page, $all_data);
         $this->load->view('template/login_footer.php');
+    }
+
+    public function forgotPass() {
+        $this->load->view('ForgotPass.php');
     }
 
 }

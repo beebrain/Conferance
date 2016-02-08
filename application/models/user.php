@@ -11,6 +11,21 @@ class user extends CI_Model {
         $this->db->update('user', $data);
         return $this->db->affected_rows();
     }
+    
+    public function updatepassword($data) {
+        $this->db->where('email', $data["email"]);
+        $this->db->update('user', $data);
+        return $this->db->affected_rows();
+    }
+
+    public function getUserView($user_id = null) {
+        if ($user_id <> NULL) {
+            $this->db->where('user_id', $user_id);
+            $this->db->where_not_in('status', "-1");
+        }
+        $query = $this->db->get('user_view');
+        return $query;
+    }
 
     public function register($data) {
         $data["password"] = md5($data["password"]);
@@ -20,10 +35,10 @@ class user extends CI_Model {
 
     public function activate($data) {
         $this->db->where('email', $data["email"]);
-        $this->db->update('user', $data); 
+        $this->db->update('user', $data);
     }
 
-    public function getuser($user_id=null) {
+    public function getuser($user_id = null) {
         if ($user_id <> NULL) {
             $this->db->where('user_id', $user_id);
             $this->db->where_not_in('status', "-1");
@@ -37,7 +52,7 @@ class user extends CI_Model {
             $this->db->where('email', $user);
             $this->db->where_not_in('status', "-1");
         }
-         $this->db->where('status', "1");
+        $this->db->where('status', "1");
         $query = $this->db->get('user');
         if ($query == null) {
             return NULL;

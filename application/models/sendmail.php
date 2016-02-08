@@ -40,6 +40,22 @@ Thank you for registering.";
         $this->sendMail($emailAddress, $body, $subject);
     }
 
+    
+     public function resetPass($emailAddress) {
+        $body = "This email was sent automatically by URUICST in response to your request to reset your password.\n";
+        $body .= "This is done for your protection; only you, the recipient of this email can take the next step in the password recovery process.\n";
+        $body .= "To reset your password and access your account, either click on the button or copy and paste the following link into the address bar of your browser:\n";
+        $body .= "\n----------------------------\n";
+        $body .= "link reset:" .base_url('index.php/Welcome/resetFromemail/') . "/" . base64_encode($emailAddress."%pass");
+        $body .= "\n----------------------------\n";
+
+
+        $subject = "Reset Password From  Science and Technology International Conference ";
+
+        $this->sendMail($emailAddress, $body, $subject);
+    }
+    
+    
     public function sendMail($emailAddress, $body, $subject) {
 
         $this->load->library('phpmailer');

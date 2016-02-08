@@ -4,8 +4,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-    public function index() {
-        $this->load->view('welcome_message');
+    public function forgotPass() {
+        $this->load->view('ForgotPass');
+    }
+
+    public function setPass() {
+        $data = $this->input->post();
+        $data['email'] = strtolower($data['email']);
+
+        $this->load->model('user');
+        if ($this->user->checkDupUser(strtolower($data['email']))) {
+            
+            $dataupdate['email'] = strtolower($data['email']);
+            $dataupdate['password'] = md5($data['newpass']);
+            $this->user->updatepassword($dataupdate);
+            $messageData["info"] = "Set Ok";
+            
+        } else { //Not Found User
+            $messageData["info"] = "Not Found User";
+        }
+
+        echo json_encode($messageData);
+    }
+
+    public function resetPass() {
+        $data = $this->input->post();
+        $data['email'] = strtolower($data['email']);
+
+        $this->load->model('user');
+        if ($this->user->checkDupUser(strtolower($data['email']))) {
+            $email = $data['email'];
+            $data['email'] = strtolower($data['email']);
+
+            $this->load->model('sendmail');
+            $this->sendmail->resetPass($email);
+
+            $messageData["info"] = "SendEmail";
+        } else { //Not Found User
+            $messageData["info"] = "Not Found User";
+        }
+
+        echo json_encode($messageData);
+    }
+
+    public function resetFromemail($email) {
+        $data['email'] = $email;
+        $dataemail = explode("%",base64_decode($email));
+        //print_r($dataemail);
+        $data['email'] = $dataemail[0];
+        $data['ticket'] = $dataemail[1];
+        if ($data['ticket'] <> "pass") {
+            redirect(base_url('index.php/MainController/index/#login'));
+        } else {
+            $this->load->view('ResetPass', $data);
+        }
     }
 
     public function sendMail() {
@@ -25,14 +77,14 @@ class Welcome extends CI_Controller {
         $this->phpmailer->AddAddress('mynameisbee@uru.ac.th', "Fucyber"); //อีกเมล์ผู้รับ  สามารถเพิ่มได้มากกว่า 1
         //  $this->phpmailer->AddAttachment("images/phpmailer.gif");      // การแนบไฟล์ถ้าต้องการ สามารถเพิ่มได้มากกว่า 1 เช่นกันครับ
         //   $this->phpmailer->AddAttachment("images/phpmailer_mini.gif"); // ตัวอย่างการพิ่มได้มากกว่า 1
-       
-            if (!$this->phpmailer->Send()) {
-                $data["message"] = "Error: " . $this->phpmailer->ErrorInfo;
-            } else {
-                $data["message"] = "ส่งอีเมล์สำเร็จ!";
-            }
-            print_r($data);
-            sleep(10);
+
+        if (!$this->phpmailer->Send()) {
+            $data["message"] = "Error: " . $this->phpmailer->ErrorInfo;
+        } else {
+            $data["message"] = "ส่งอีเมล์สำเร็จ!";
+        }
+        print_r($data);
+        sleep(10);
     }
 
 }
