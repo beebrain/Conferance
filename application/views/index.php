@@ -102,7 +102,10 @@
                     <div class="tp-caption medium_light_white sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="200" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
                         Faculty of Science and Technology, Uttaradit Rajabhat University, Uttaradit, Thailand
                     </div>
-
+                    <div class="tp-caption medium_light_red sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="150" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
+                        Update!! Extended full  paper submission to  15 May 2016
+                    </div>
+                    
             </ul>
         </div>
 
@@ -354,8 +357,12 @@
                 </thead>
                 <tbody>
                     <tr class="row-odd" >
-                        <td style="background-color: #FFAAAA;">Extended Full Paper Submission Deadline</td>
-                        <td style="background-color: #FFAAAA;">1 May 2016</td>
+                        <td >Extended Full Paper Submission Deadline
+                            <p style="color: red">(Update!! Extended full paper submission to 15 May 2016)</p>
+                        </td>
+                     
+                        
+                        <td >1 May 2016</td>
                     </tr>
                     <tr class="row-even">
                         <td>Early Bird Registration Deadline</td>
