@@ -115,6 +115,15 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="meal">Meal Types <span style="color: red"> *</span>  </label>
+                            <select class="form-control" id="meal" name="meal" required>
+                                <option value=""><p>Please Select</p></option>
+                                <option value="Normal Meal"><p>Normal Meal</p></option>
+                                <option value="Vegetarian Meal"><p>Vegetarian Meal</p></option>
+                                <option value="Muslim Meal"><p>Muslim Meal</p></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="Email">Email <span style="color: red"> *</span>  </label>
                             <input type="text" name = "email" id = "email" class="form-control" placeholder="email" required>
                         </div>
@@ -123,7 +132,7 @@
                             <input type="password" name = "password"  id = "password" class="form-control" placeholder="password" required>
                         </div>
                         <div class="form-group">
-                            <?php echo $captcha; ?>
+                            <?php //echo $captcha; ?>
                         </div>
                         <div class="form-group pull-right">
                             <button type="button" onclick="sendData()"class="btn btn-neutral btn-success" >Register</button>

@@ -68,38 +68,38 @@
                     <div class="tp-caption mediumlarge_light_white sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="-40" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
                         <p>URU International Conference on Science and Technology 2016</p>
                     </div>
-                    <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="0" data-speed="500" data-start="1000" data-easing="Power4.easeOut">
+                    <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="10" data-speed="500" data-start="1000" data-easing="Power4.easeOut">
                         “Celebrating 80 years of Uttaradit Rajabhat University”
                     </div>
-                    <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="-100" data-voffset="100" data-speed="500" data-start="900" data-easing="Power4.easeOut">
-                        <img src="<?php echo base_url('asserts/img/Logo_uru.png') ?>" height="20%" width="20%" class="img-responsive scrollpoint sp-effect1" alt="">    
-                    </div>
-                    <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="100" data-voffset="100" data-speed="500" data-start="1000" data-easing="Power4.easeOut">
-                        <img src="<?php echo base_url('asserts/img/Logo_sci.png') ?>" height="25%" width="25%" class="img-responsive scrollpoint sp-effect2" alt="">
-                    </div>
-                    <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="-280" data-voffset="100" data-speed="500" data-start="1100" data-easing="Power4.easeOut">
-                        <img src="<?php echo base_url('asserts/img/logo/Logo3.png') ?>" height="25%" width="25%" class="img-responsive scrollpoint sp-effect3" alt="">
-                    </div>
-                    <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="280" data-voffset="100" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
-                        <img src="<?php echo base_url('asserts/img/logo/Logo1.png') ?>" height="10%" width="10%" class="img-responsive scrollpoint sp-effect5" alt="">
-                    </div>
-                    <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="-450" data-voffset="100" data-speed="500" data-start="1300" data-easing="Power4.easeOut">
-                        <img src="<?php echo base_url('asserts/img/logo/Logo2.png') ?>" height="15%" width="15%" class="img-responsive scrollpoint sp-effect3" alt="">
-                    </div>
-                    <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="450" data-voffset="100" data-speed="500" data-start="1400" data-easing="Power4.easeOut">
-                        <img src="<?php echo base_url('asserts/img/logo/Logo6.png') ?>" height="100%" width="80%" class="img-responsive scrollpoint sp-effect1" alt="">
-                    </div>
-                    <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="600" data-voffset="100" data-speed="500" data-start="1400" data-easing="Power4.easeOut">
-                        <img src="<?php echo base_url('asserts/img/logo/Logo5.png') ?>" height="100%" width="80%" class="img-responsive scrollpoint sp-effect1" alt="">
-                    </div>
-                    <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="-600" data-voffset="100" data-speed="500" data-start="1500" data-easing="Power4.easeOut">
-                        <img src="<?php echo base_url('asserts/img/logo/Logo4.png') ?>" width="70%" class="img-responsive scrollpoint sp-effect2" alt="">
-                    </div>
-
-                    <div class="tp-caption medium_bg_orange sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="200" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
+                    <!-- <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="-100" data-voffset="100" data-speed="500" data-start="900" data-easing="Power4.easeOut">
+                         <img src="<?php echo base_url('asserts/img/Logo_uru.png') ?>" height="20%" width="20%" class="img-responsive scrollpoint sp-effect1" alt="">    
+                     </div>
+                     <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="100" data-voffset="100" data-speed="500" data-start="1000" data-easing="Power4.easeOut">
+                         <img src="<?php echo base_url('asserts/img/Logo_sci.png') ?>" height="25%" width="25%" class="img-responsive scrollpoint sp-effect2" alt="">
+                     </div>
+                     <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="-280" data-voffset="100" data-speed="500" data-start="1100" data-easing="Power4.easeOut">
+                         <img src="<?php echo base_url('asserts/img/logo/Logo3.png') ?>" height="25%" width="25%" class="img-responsive scrollpoint sp-effect3" alt="">
+                     </div>
+                     <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="280" data-voffset="100" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
+                         <img src="<?php echo base_url('asserts/img/logo/Logo1.png') ?>" height="10%" width="10%" class="img-responsive scrollpoint sp-effect5" alt="">
+                     </div>
+                     <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="-450" data-voffset="100" data-speed="500" data-start="1300" data-easing="Power4.easeOut">
+                         <img src="<?php echo base_url('asserts/img/logo/Logo2.png') ?>" height="15%" width="15%" class="img-responsive scrollpoint sp-effect3" alt=""> 
+                     </div>
+                     <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="450" data-voffset="100" data-speed="500" data-start="1400" data-easing="Power4.easeOut">
+                         <img src="<?php echo base_url('asserts/img/logo/Logo6.png') ?>" height="100%" width="80%" class="img-responsive scrollpoint sp-effect1" alt="">
+                     </div>
+                     <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="600" data-voffset="100" data-speed="500" data-start="1400" data-easing="Power4.easeOut">
+                         <img src="<?php echo base_url('asserts/img/logo/Logo5.png') ?>" height="100%" width="80%" class="img-responsive scrollpoint sp-effect1" alt="">
+                     </div>
+                     <div class="tp-caption medium_light_white  sft" data-x="center" data-y="center" data-hoffset="-600" data-voffset="100" data-speed="500" data-start="1500" data-easing="Power4.easeOut">
+                         <img src="<?php echo base_url('asserts/img/logo/Logo4.png') ?>" width="70%" class="img-responsive scrollpoint sp-effect2" alt="">
+                     </div>
+                    -->
+                    <div class="tp-caption medium_bg_orange sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="100" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
                         August 1-2, 2016
                     </div>
-                    <div class="tp-caption medium_light_white sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="260" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
+                    <div class="tp-caption medium_light_white sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="200" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
                         Faculty of Science and Technology, Uttaradit Rajabhat University, Uttaradit, Thailand
                     </div>
 
@@ -176,15 +176,15 @@
                                 <div class="col-md-10">
                                     <div class="review-comment">
                                         <h3>“Prof. Dr. Saisamorn Lumyong ”</h3>
-                                        <p>Biology
-                                        </p>
                                         <p>Department of Biology, Faculty of Science, Chiang Mai University, Chiang Mai, Thailand.                                       </p>
+                                        <p>Topic : Application and utilization of the microbial diversity</p>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                         <div class="review rollitin">
+
+                        <div class="review rollitin">
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="review-person">
@@ -484,6 +484,7 @@
                 </div>
                 <p class="text-center"><button type="button" class="btn btn-warning btn-lg" Onclick="window.location.href = '<?php echo base_url('upload/Doc/Desc-Abstract-59.pdf') ?>'">Download Full Text Description</button></p>
                 <p class="text-center"> <button type="button" class="btn btn-success btn-lg" Onclick="window.location.href = '<?php echo base_url('upload/Doc/Template_Full-text.pdf') ?>'">Download Full Text Template</button></p>
+				<p class="text-center"> <button type="button" class="btn btn-info btn-lg" Onclick="window.location.href = '<?php echo base_url('upload/Doc/Poster-template-English.pdf') ?>'">Download Poster Template</button></p>
             </div>
             <div class="divider"></div>
         </div>
@@ -604,11 +605,11 @@
                     <tbody>
                         <?php
                         $i = 0;
-                        foreach ($member as $key=>$value) {
+                        foreach ($member as $key => $value) {
                             ?>
                             <tr >
                                 <td class="text-center" ><?= ++$i; ?></td>
-                                <td><?= $value->title.$value->first." ".$value->mid." ".$value->last ?></td>
+                                <td><?= $value->title . $value->first . " " . $value->mid . " " . $value->last ?></td>
                                 <td class="text-center"><?= $value->faculty ?></td>
                                 <td class="text-center"><?= $value->university ?></td>
                                 <td class="text-center"><?= $value->country ?></td>
@@ -635,7 +636,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2 col-sm-8 scrollpoint sp-effect1">
+                    <div class="col-md-8 col-md-offset-1 col-sm-8 scrollpoint sp-effect1">
                         <div class="media">
                             <a class="pull-left" href="#" >
                                 <i class="fa fa-map-marker fa-2x"></i>
@@ -659,11 +660,36 @@
                                 <i class="fa fa-phone fa-2x"></i>
                             </a>
                             <div class="media-body">
-                                <h4 class="media-heading">+66 5541-1096 # 1300 </h4>
+                                <h4 class="media-heading">+66-81 8812099</h4>
                             </div>
                         </div>
+                        <div class="media">
+                            <a class="pull-left" href="#" >
+                                <i class="fa fa-navicon fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Website: www.uruicst2016.uru.ac.th</h4>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <a class="pull-left" href="#" >
+                                <i class="fa fa-facebook fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Facebook: https://www.facebook.com/uruicst2016</h4>
+                            </div>
+
+                        </div>
+
                     </div>
 
+                    <div class="col-md-3 col-sm-3 scrollpoint sp-effect1">
+
+                        <div class="media">
+                            <h4>Visitor Counter</h4>
+                            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5jcc03mnh23&amp;m=0&amp;s=220&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=0" async="async"></script>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -680,6 +706,7 @@
 <script src="<?php echo base_url('asserts/js/scripts.js') ?>"></script>
 <script src="<?php echo base_url('asserts/js/datatable.js') ?>"></script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
+
 <script>
                             $(document).ready(function () {
                                 appMaster.preLoader();
@@ -688,6 +715,7 @@
                             });
 
                             function login() {
+                                $("#info_m").hide();
                                 var formData = $("#loginform").serializeArray();
                                 var URL = $("#loginform").attr("action");
                                 console.log(formData);
@@ -696,6 +724,8 @@
                                     var data_json = jQuery.parseJSON(data);
                                     console.log(data_json);
                                     if (data_json["url"] == "") {
+
+                                        $("#info_m").html(data_json["info"]);
                                         $("#info_m").show();
                                     } else {
                                         window.location.replace(data_json["url"]);

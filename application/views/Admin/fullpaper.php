@@ -12,7 +12,6 @@
 
                             <select name="citeria" class="form-control">
                                 <option value="0">Wait Review</option>
-                                <option value="1">Resubmit</option>
                                 <option value="2">Approved</option>
                                 <option value="3">Reject</option>
                             </select>
@@ -34,7 +33,6 @@
                                     <th>Title</th>
                                     <th>Type Paper</th>
                                     <th>Link Paper</th>
-                                    <th>Link Abstract</th>
                                     <th>Author</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -48,10 +46,9 @@
                                     <tr>
                                         <td><?= $value->paper_id ?></td>
                                         <td><?= $value->paper_title ?></td>
-                                        <td><?= $value->detailpaper ?></td>
-                                        <td><a href="<?= $value->paper_link ?>">Link</a></td>
-                                        <td><a href="<?= $value->abstract_link ?>">Link</a></td>
-                                        <td><?= $value->name ?></td>
+                                        <td><?= $value->fdetail ?></td>
+                                        <td><a href="<?= base_url()."/upload/".$value->paper_link ?>">Link</a></td>
+                                        <td><?= $value->first." ".$value->mid." ".$value->last ?></td>
                                         <td><?php
                                             if ($value->status == 0) {
                                                 echo "Wait Review";
@@ -59,16 +56,14 @@
                                                 echo "Resubmit";
                                             } else if ($value->status == 2) {
                                                 echo "Approved";
-                                            } else {
-                                                echo "Reject";
                                             }
                                             ?>
                                         </td>
                                         <td>
                                             <?php
                                             if ($value->status == 0) {
-                                                echo "<p><a href=" . base_url('index.php/AdminController/fullpaperChange/1/') . "/" . $value->paper_id . " >Resubmit</a></p> "
-                                                . "<p>  <a href=" . base_url('index.php/AdminController/fullpaperChange/2') . "/" . $value->paper_id . " >Approved</a></p> "
+                                                echo 
+                                                 "<p>  <a href=" . base_url('index.php/AdminController/fullpaperChange/2') . "/" . $value->paper_id . " >Approved</a></p> "
                                                 . "<p>  <a href=" . base_url('index.php/AdminController/fullpaperChange/-1') . "/" . $value->paper_id . " >Reject</a></p> ";
                                             }
                                             ?>

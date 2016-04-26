@@ -5,11 +5,11 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12 main">
-                <h1 class="page-header"> List Of Abstract</h1>
+                <h1 class="page-header"> List Of Full Paper</h1>
                 <div class="panel-body">
 
-                    <div class="clearfix text-center"><h3> List Of Abstract <?php //print_r($abstract)         ?></h3></div>
-                    <div class="col-md-10 col-md-offset-1">
+                    <div class="clearfix text-center"><h3> List Of Full Paper <?php //print_r($abstract)         ?></h3></div>
+                    <div class="col-md-12 ">
 
                         <table id="listmember" >
                             <thead>

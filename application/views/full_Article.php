@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Participate <span style="color: red"> *</span>  </label>
-                                        <input type="text" class="form-control" value="<?= $user->p_detail ?>" disabled="">
+                                        <input type="text" class="form-control" value="<?= $user->detail ?>" disabled="">
 
                                     </div>
                                     <div class="form-group">
@@ -49,7 +49,7 @@
                                         <label>Full paper <span style="color: red"> *</span>  </label>
                                         <input type="file"  class="form-control" value="Browse" name="paper" id="paper" placeholder="Department" >
                                     </div>
-                                    <p></p>
+                                    <p><span style="color: red"> You have 3 days for resubmit your article. </span></p>
 
                                     <div class="form-group">
                                         <div class="col-md-4"></div>
@@ -66,6 +66,7 @@
                             </div>
                         </div>
                     <?php } else { ?>
+
                         <div id="myModal" class="modal fade" role="dialog">
                             <div class="modal-dialog modal-lg">
 
@@ -91,7 +92,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Participate <span style="color: red"> *</span>  </label>
-                                                <input type="text" class="form-control" value="<?= $user->p_detail ?>" disabled>
+                                                <input type="text" class="form-control" value="<?= $user->detail ?>" disabled>
                                             </div>
                                             <div class="form-group">
                                                 <label>Field <span style="color: red"> *</span>  </label>
@@ -126,7 +127,12 @@
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Information <?php //print_r($paper)                   ?></th>
+                                    <th>Information <?php
+                                        $day1 = strtotime($paper->submit_date);
+                                        $day2 = strtotime(date("Y-m-d"));
+                                        //print_r($day2-$day1);
+                                        ?>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -150,15 +156,30 @@
                                     <td style="width: 40%" class="text-left"><label>Paper</label></td>
                                     <td><a href="<?= base_url() . "upload/" . $paper->paper_link; ?>">Link</a></td>
                                 </tr>
+                                <tr>
+                                    <td style="width: 40%" class="text-left"><label>submit date</label></td>
+                                    <td> <?= $paper->submit_date; ?> </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 40%" class="text-left"><label>Note</label></td>
+                                    <td><span style="color: red"> You have 3 days for resubmit your article. </span></td>
+                                </tr>
                             </tbody>
                         </table>
+                        <?php
+                        if ($day2 - $day1 > 60 * 60 * 24 * 3) {
+                            echo "<span style='color: red'> You not allow to resubmit your article. </span>";
+                            
+                        } else {
+                            ?>
+                            <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal" >
+                                <i class="fa fa-edit" ></i>
+                            </button>
 
-                        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal" >
-                            <i class="fa fa-edit" ></i>
-                        </button>
 
-
-                    <?php } ?>
+                        <?php }
+                    }
+                    ?>
 
                 </div>
 
@@ -181,30 +202,30 @@
 <script src="<?php echo base_url('asserts/js/additional-methods.min.js') ?>"></script>
 <script src="<?php echo base_url('asserts/js/bootstrap.min_.js') ?>"></script>
 <script>
-                                                // $("#Confirm").hide();
-                                                jQuery.validator.setDefaults({
-                                                    rules: {
-                                                        paper: {
-                                                            required: true,
-                                                            extension: "doc|docx"
+                                                    // $("#Confirm").hide();
+                                                    jQuery.validator.setDefaults({
+                                                        rules: {
+                                                            paper: {
+                                                                required: true,
+                                                                extension: "doc|docx"
+                                                            }
+                                                        },
+                                                        messages: {
+                                                            paper: {
+                                                                required: "<p class='text-danger'>This field is required.</p>",
+                                                                extension: "<p class='text-danger'>File type invalid. (.doc .docx )</p>"
+                                                            }
                                                         }
-                                                    },
-                                                    messages: {
-                                                        paper: {
-                                                            required: "<p class='text-danger'>This field is required.</p>",
-                                                            extension: "<p class='text-danger'>File type invalid. (.doc .docx )</p>"
-                                                        }
-                                                    }
-                                                });
+                                                    });
 
-                                                var form = $("#submitPaper");
-                                                form.validate();
-                                                function sendData() {
-                                                    console.log(form);
-                                                    if (form.valid()) {
-                                                        form.submit();
+                                                    var form = $("#submitPaper");
+                                                    form.validate();
+                                                    function sendData() {
+                                                        console.log(form);
+                                                        if (form.valid()) {
+                                                            form.submit();
+                                                        }
                                                     }
-                                                }
 
 </script>
 

@@ -49,7 +49,7 @@ class UserPanel extends CI_Controller {
 
     public function profile() {
         $this->load->model('user');
-        $result = $this->user->getuser($this->user_login['user_id']);
+        $result = $this->user->getUserView($this->user_login['user_id']);
         $data = $result->result();
         $all_data['user_data'] = $data[0];
         $this->load->view('template/login_header.php');
@@ -107,7 +107,8 @@ class UserPanel extends CI_Controller {
         $result = $this->user->getuser($this->user_login['user_id']);
         $data = $result->result();
         $data_user = $data[0];
-        $result = $this->paper->viewPaper();
+        $citeria['status !='] = '-1';
+        $result = $this->paper->viewPaper($citeria);
         $data_result["paper"] = null;
         if ($result <> null) {
             $data_result["paper"] = $result;

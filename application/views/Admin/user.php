@@ -15,7 +15,7 @@
                                 <tr>
                                     <th>userid</th>
                                     <th>Name</th>
-                                    <th>Address</th>
+                                    <th>university</th>
                                     <th>Gender</th>
                                     <th>Country</th>
                                     <th>Email</th>
@@ -31,8 +31,8 @@
 
                                     <tr>
                                         <td><?=$value->user_id?></td>
-                                        <td><?=$value->name?></td>
-                                        <td><?=$value->address?></td>
+                                        <td><?=$value->first." ".$value->mid." ".$value->last?></td>
+                                        <td><?=$value->university?></td>
                                         <td><?=$value->gender?></td>
                                         <td><?=$value->country?></td>
                                         <td><?=$value->email?></td>

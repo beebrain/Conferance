@@ -7,24 +7,24 @@ class UserController extends CI_Controller {
     public function register() {
         $this->load->library("recaptcha");
         $data = $this->input->post();
-        $recaptcha = $data["g-recaptcha-response"];
-        $response = $this->recaptcha->verifyResponse($recaptcha);
-        if (!isset($response['success']) || $response['success'] <> true) {
-            $messageData["info"] = "Robot";
-        } else {
-            unset($data['g-recaptcha-response']);
-            $this->load->model('user');
-            if (!$this->user->checkDupUser(strtolower($data['email']))) {
-                $email = $data['email'];
-                $data['email'] = strtolower($data['email']);
-                $messageData["info"] = "success";
-                $this->user->register($data);
-                $this->load->model('sendmail');
-                $this->sendmail->confirmUser($email, $data['password']);
-            } else { // duplicate user
-                $messageData["info"] = "Duplicate User";
-            }
+        // $recaptcha = $data["g-recaptcha-response"];
+        // $response = $this->recaptcha->verifyResponse($recaptcha);
+        // if (!isset($response['success']) || $response['success'] <> true) {
+        //   $messageData["info"] = "Robot";
+        // } else {
+        //  unset($data['g-recaptcha-response']);
+        $this->load->model('user');
+        if (!$this->user->checkDupUser(strtolower($data['email']))) {
+            $email = $data['email'];
+            $data['email'] = strtolower($data['email']);
+            $messageData["info"] = "success";
+            $this->user->register($data);
+            $this->load->model('sendmail');
+            $this->sendmail->confirmUser($email, $data['password']);
+        } else { // duplicate user
+            $messageData["info"] = "Duplicate User";
         }
+        // }
         echo json_encode($messageData);
     }
 
@@ -50,7 +50,7 @@ class UserController extends CI_Controller {
 
         $datainsert["user_id"] = $user_data["user_id"];
         $datainsert["address"] = $data["address_pay"];
-        $datainsert["submit_date"] =  date("Y-m-d h:i:s A");
+        $datainsert["submit_date"] = date("Y-m-d h:i:s A");
         $datainsert["status"] = 0;
 
         if ($data["student"] == 'S') {
@@ -84,7 +84,7 @@ class UserController extends CI_Controller {
     public function paymentComfirm() {
         $user_data = $this->session->userdata('user_data');
         $data = $this->input->post();
-        
+
 
         $config['upload_path'] = "upload/pay";
         $config['allowed_types'] = "jpg|gif|png|pdf";
@@ -114,24 +114,24 @@ class UserController extends CI_Controller {
                 $info['statis'] = "error";
             }
         }
-        
+
 
         $datainsert["user_id"] = $user_data["user_id"];
         $datainsert["payment_link"] = "/upload/pay/" . $data_payment["file_name"];
 
 
-        $datainsert["confirm_date"] = $data["datePay"]." ".$data["time"];
+        $datainsert["confirm_date"] = $data["datePay"] . " " . $data["time"];
         $datainsert["status"] = 1;
         if ($data["student"] != "Regular") {
             $datainsert["student_link"] = "/upload/pay/" . $data_student["file_name"];
-        } 
+        }
 
 
         $this->load->model('paymentmodel');
-        
+
         $condition["user_id"] = $user_data["user_id"];
         $condition["status"] = "0";
-        $this->paymentmodel->update($condition,$datainsert);
+        $this->paymentmodel->update($condition, $datainsert);
 
         redirect(base_url('index.php/UserPanel/payment'));
     }
@@ -167,11 +167,11 @@ class UserController extends CI_Controller {
             $data_insert["status"] = 0;
             $this->paper->insert($data_insert);
             $id_paper = $this->db->insert_id();
-            
+
             $id_field = $this->paper->getIdfield($data["field_type"]);
             // Update Article_code
-            $data_insert["article_code"] = $data_user->participation . $data["field_type"] .$id_paper."-".$this->fullIdArtic($id_field);
-
+            $data_insert["article_code"] = $data_user->participation . $data["field_type"] . $id_paper . "-" . $this->fullIdArtic($id_field);
+            $data_insert['submit_date'] = date("Y-m-d");
             $condition["paper_id"] = $id_paper;
             $this->paper->update($condition, $data_insert);
         } else {
@@ -247,11 +247,18 @@ class UserController extends CI_Controller {
         $this->load->model('user');
         $user_data = $this->user->checkuser($data['email'], $data['password']);
         if ($user_data <> NULL) {
-            $this->session->set_userdata('user_data', $user_data);
-            $message["url"] = base_url('index.php/UserPanel/index');
+            if ($user_data["status"] == '1') {
+                $this->session->set_userdata('user_data', $user_data);
+                $message["url"] = base_url('index.php/UserPanel/index');
+                $message["info"] = "login";
+            } else {
+                $message["url"] = "";
+                $message["info"] = "Please check your  email address  for  activated the account.";
+            }
             //redirect(base_url('index.php/UserPanel/'));
         } else {
             $message["url"] = "";
+            $message["info"] = "Email or Password is wrong.";
         }
         echo json_encode($message);
     }

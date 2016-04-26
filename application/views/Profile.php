@@ -74,6 +74,15 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label for="meal">Meal Types <span style="color: red"> *</span>  </label>
+                                    <select class="form-control" id="meal" name="meal" required>
+                                        <option value=""><p>Please Select</p></option>
+                                        <option value="Normal Meal"><p>Normal Meal</p></option>
+                                        <option value="Vegetarian Meal"><p>Vegetarian Meal</p></option>
+                                        <option value="Muslim Meal"><p>Muslim Meal</p></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="Email">Email <span style="color: red"> *</span>  </label>
                                     <input type="text" name = "email" id = "email" class="form-control" placeholder="email" disabled="" value="<?= $user_data->email ?>">
                                 </div>
@@ -88,7 +97,7 @@
             </div>
         </div>
     </div>
-    
+
 
 
     <div id="page-wrapper">
@@ -118,6 +127,22 @@
                                                     <p><?= $user_data->university; ?> </p>
                                                     <p><?= $user_data->country; ?> </p>
                                                     <p><?= $user_data->postcode; ?> </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Participation Type:</td>
+                                                <td>
+
+                                                    <p><?= $user_data->detail; ?> </p>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Meal Type:</td>
+                                                <td>
+
+                                                    <p><?= $user_data->meal; ?> </p>
+
                                                 </td>
                                             </tr>
                                             <tr>
@@ -166,7 +191,8 @@
                                             $("#title").val('<?= $user_data->title; ?>');
                                             $("#Gender").val('<?= $user_data->gender; ?>');
                                             $("#participation").val('<?= $user_data->participation; ?>');
-                                           
+                                            $("#meal").val('<?= $user_data->meal; ?>');
+
                                             $("#registerForm").validate({
                                                 rules: {
                                                     postcode: {

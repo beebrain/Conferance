@@ -52,11 +52,12 @@ class user extends CI_Model {
             $this->db->where('email', $user);
             $this->db->where_not_in('status', "-1");
         }
-        $this->db->where('status', "1");
+        /*$this->db->where('status', "1");*/
         $query = $this->db->get('user');
         if ($query == null) {
             return NULL;
         }
+        
         $result = $query->result_array();
         $MD5_password = md5($password);
         if ($result <> NULL && $result[0]['password'] == md5($password)) {

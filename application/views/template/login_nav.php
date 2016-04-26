@@ -24,7 +24,7 @@
                 <li > <a href="<?php echo base_url('index.php/UserPanel/profile') ?>"><i class="fa-user fa"> </i> Profile</a></li>
                 <li><a href="<?php echo base_url('index.php/UserPanel/fullArticle') ?>"><i class="fa fa-paper-plane"> </i> Full paper Submission </a></li>
                 <li><a href="<?php echo base_url('index.php/UserPanel/payment') ?>"><i class="fa fa-money"> </i> Payments</a></li>
-                <li><a href="<?php echo base_url('index.php/UserPanel/listArticle') ?>"><i class="fa fa-money"> </i> List of Abstract Submission</a></li>
+                <li><a href="<?php echo base_url('index.php/UserPanel/listArticle') ?>"><i class="fa fa-money"> </i> List of Full paper Submission</a></li>
                 <li><a href="<?php echo base_url('index.php/UserController/logout') ?>"><i class="fa fa-sign-out"></i> Logout</a></li>
             </ul>
         </div>

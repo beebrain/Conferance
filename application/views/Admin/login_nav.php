@@ -36,7 +36,6 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li ><a href="<?php echo base_url('index.php/AdminPanel/user') ?>"><i class="fa-bullhorn fa"></i> User Manage</a></li>
-                <li ><a href="<?php echo base_url('index.php/AdminPanel/Article') ?>"><i class="fa-bullhorn fa"></i> Article Manage</a></li>
                 <li ><a href="<?php echo base_url('index.php/AdminPanel/FullArticle') ?>"><i class="fa-bullhorn fa"></i> FullPaper Manage</a></li>
                 <li><a href="<?php echo base_url('index.php/AdminPanel/payment') ?>"><i class="glyphicon glyphicon-cog"></i> Payment Manage</a></li>
                 <li><a href="<?php echo base_url('index.php/AdminPanel/logout') ?>"><i class="glyphicon glyphicon-off"></i> Logout</a></li>

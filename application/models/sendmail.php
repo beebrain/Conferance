@@ -2,10 +2,10 @@
 
 class sendmail extends CI_Model {
 
-    private $username = "mynameisbee@uru.ac.th";
+    private $username = "uruicst2016@uru.ac.th";
     private $detailname = "Science International Conference";
     private $password = "beebraingreat";
-    private $sendform = "mynameisbee@uru.ac.th";
+    private $sendform = "uruicst2016@uru.ac.th";
 
     // private $subject = "Confirm Account";
 
