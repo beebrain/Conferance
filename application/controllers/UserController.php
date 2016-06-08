@@ -149,7 +149,7 @@ class UserController extends CI_Controller {
 
         $config['upload_path'] = "upload/";
         $config['allowed_types'] = "jpg|gif|png|doc|docx|pdf|xlsx|xls|txt";
-        $config['max_size'] = 2048;
+        $config['max_size'] = 5120;
         $config['file_name'] = $data_user->user_id . "_paper";
         $config['encrypt_name'] = 'true';
 
@@ -240,6 +240,7 @@ class UserController extends CI_Controller {
         $this->load->view('Activate');
         //redirect(base_url('index.php/MainController/index/#login'));
     }
+
 
     public function login() {
         $data = $this->input->post();

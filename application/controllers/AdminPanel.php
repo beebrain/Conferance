@@ -71,4 +71,36 @@ class AdminPanel extends CI_Controller {
         $this->load->view('Admin/fullpaper.php', $data);
     }
 
+    public function listpaper() {
+        $this->load->model('paper');
+        $condition["status"] = 0;
+        $paper = $this->paper->viewPaper($condition);
+        $data['paper'] = $paper;
+        $this->load->view('Admin/login_header.php');
+        $this->load->view('Admin/listFull.php', $data);
+    }
+
+    public function listuser() {
+        $this->load->model('paper');
+        $result = $this->paper->paper_except();
+        $data['user'] = $result;
+        $this->load->view('Admin/login_header.php');
+        $this->load->view('Admin/listuser.php', $data);
+    }
+
+    public function listpayment() {
+        $this->load->model('paymentmodel');
+        $payment = $this->paymentmodel->getpayment();
+
+        $this->load->model('followermodel');
+        foreach ($payment as $key => $value) {
+            $condition['pay_id'] = $value->pay_id;
+            $payment[$key]->follower = $this->followermodel->getfollower($condition);
+        }
+        $data['payment'] = $payment;
+
+        $this->load->view('Admin/login_header.php');
+        $this->load->view('Admin/listpayment.php', $data);
+    }
+
 }

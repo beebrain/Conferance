@@ -23,7 +23,7 @@
                                 <form class="form form-vertical" id="submitPaper" name = "submitPaper" enctype="multipart/form-data" method="post" action="<?php echo base_url('index.php/UserController/submitPaper') ?>">
                                     <div class="form-group">
                                         <label>Title <span style="color: red"> *</span>  </label>
-                                        <input type="text" name = "paper_title" id = "paper_title" class="form-control" placeholder="Title">
+                                        <input type="text" name = "paper_title" id = "paper_title" class="form-control " disabled="" placeholder="Title">
 
                                     </div>
                                     <div class="form-group">
@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Field <span style="color: red"> *</span>  </label>
-                                        <select class="form-control" id="field_type" name="field_type" required>
+                                        <select class="form-control" id="field_type" name="field_type"  disabled="" required>
                                             <option value=""><p>Please Select</p></option>
                                             <?php
                                             foreach ($field as $key => $value) {
@@ -47,7 +47,7 @@
                                     <div class = "form-group">
                                         <?php ?>
                                         <label>Full paper <span style="color: red"> *</span>  </label>
-                                        <input type="file"  class="form-control" value="Browse" name="paper" id="paper" placeholder="Department" >
+                                        <input type="file"  disabled="" class="form-control" value="Browse" name="paper" id="paper" placeholder="Department" >
                                     </div>
                                     <p><span style="color: red"> You have 3 days for resubmit your article. </span></p>
 
@@ -55,8 +55,8 @@
                                         <div class="col-md-4"></div>
                                         <div class="col-md-8">  
                                             <div class="controls">
-                                                <button type="button" onclick="sendData()" class="btn btn-primary pull-right">
-                                                    send
+                                                <button type="button" onclick="sendData()" class="btn btn-danger pull-right disabled">
+                                                    expired submit paper
                                                 </button>
                                             </div>
                                         </div>

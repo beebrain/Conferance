@@ -1,6 +1,6 @@
 
 <div id="wrapper">
-    <?php $this->load->view("Admin/login_nav") ?>
+    <?php $this->load->view("Admin/nav") ?>
 
     <div id="page-wrapper">
         <div class="row">
@@ -16,12 +16,12 @@
                                     <th>userid</th>
                                     <th>Name</th>
                                     <th>university</th>
-                                    <th>Gender</th>
-                                    <th>Country</th>
+                                    <th>paper Title</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>delete</th>
-                                    <th>Edit</th>
+                                    <th>participation</th>
+                                    
+                                
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,12 +33,12 @@
                                         <td><?=$value->user_id?></td>
                                         <td><?=$value->first." ".$value->mid." ".$value->last?></td>
                                         <td><?=$value->university?></td>
-                                        <td><?=$value->gender?></td>
-                                        <td><?=$value->country?></td>
+                                        <td><?=$value->paper_title?></td>
+                                        
                                         <td><?=$value->email?></td>
                                         <td><?=$value->phone?></td>
-                                        <td>delete</td>
-                                        <td><a href="<?php echo base_url('index.php/AdminController/logingod/')?>/<?=$value->user_id?>">edit</a></td>
+                                        <td><?=$value->detail?></td>
+                                        
                                     </tr>
                                     <?php
                                 }

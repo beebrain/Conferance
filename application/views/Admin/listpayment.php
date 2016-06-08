@@ -1,6 +1,6 @@
 
 <div id="wrapper">
-    <?php $this->load->view("Admin/login_nav") ?>
+    <?php $this->load->view("Admin/nav") ?>
 
     <div id="page-wrapper">
         <div class="row">

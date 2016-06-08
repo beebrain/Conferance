@@ -222,7 +222,7 @@
                                                     }
 
                                                     function checkprice() {
-                                                        var early = "2016-06-01";
+                                                        var early = "2016-06-16";
                                                         var normal = "2016-06-30";
                                                         var currentDate = "<?php echo date("Y-m-d"); ?>";
 
