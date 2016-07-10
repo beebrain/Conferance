@@ -99,12 +99,16 @@
                     <div class="tp-caption medium_bg_orange sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="100" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
                         August 1-2, 2016
                     </div>
-                    <div class="tp-caption medium_light_white sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="200" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
+                    <div class="tp-caption medium_light_white sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="220" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
                         Faculty of Science and Technology, Uttaradit Rajabhat University, Uttaradit, Thailand
                     </div>
                     <div class="tp-caption medium_light_red sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="150" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
-                        Update!! Extended full  paper submission to  20 May 2016
+                        Update!! URUICST2016 Program and Oral Presentation Program
                     </div>
+                    <div class="tp-caption small_text " data-x="center" data-y="center" data-hoffset="0" data-voffset="190" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
+                        <p>(<a href="<?= base_url('/upload/Doc/URUICST-2016-CONFERENCE-PROGRAM.pdf')?>">URUICST2016 Program</a>,<a href="<?= base_url('/upload/doc/Oral-Presentation-Program.pdf')?>"> Oral Presentation Program </a>)</p>
+                    </div>
+                    
                     
             </ul>
         </div>
@@ -469,7 +473,7 @@
         <div class="section-heading scrollpoint sp-effect3">
             <h1>Submission information</h1>
             <div class="divider"></div>
-            <p style="text-align: left;text-indent: 1.5em;"> Prospective authors are invited to submit original papers (not being considered for publication elsewhere) in standard format (double column, single-spaced, 10-pt font) describing new theoretical and/or experimental research. Submissions are recommended to have no more than 6 pages, including figures, tables, and references. Submissions will be judged on originality, significance, interest, clarity, relevance, correctness, and presentation. 
+            <p style="text-align: left;text-indent: 1.5em;"> Submissions are recommended to have no more than 6 pages, including figures, tables, and references. Submissions will be judged on originality, significance, interest, clarity, relevance, correctness, and presentation. 
             </p>
             <p style="text-align: left;text-indent: 1.5em;" >
                 - See more at: http://www. uruicst2016.uru.ac.th

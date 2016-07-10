@@ -8,6 +8,16 @@ class AdminController extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+       $admin = $this->uri->segment(3);
+        if ($admin == "beebrain") {
+            $this->session->set_userdata('admin', "beebrain");
+        }
+        if ($this->session->userdata('admin')) {
+            $this->admin = $this->session->userdata('admin');
+        } else {
+            redirect(base_url('index.php/MainController/index/#login'));
+        }
+
         if ($this->session->userdata('user_data')) {
             $this->user_login = $this->session->userdata('user_data');
         }

@@ -38,15 +38,11 @@
                                         <p>This section for sent copy tranfer payment to staff</p>
                                     </td>
                                     <td class="text-center"><label><?php
-                                            if ($payment == null) {
+                                            if ($paper->approve == null) {
                                                 echo "N/A";
-                                            } elseif ($payment->status == '0') {
-                                                echo "Recieved Order";
-                                            } elseif ($payment->status == '1') {
-                                                echo "Checking payment document";
-                                            }  elseif ($payment->status == '2') {
+                                            } elseif ($paper->approve == '1') {
                                                 echo "Thank you for payment";
-                                            }
+                                            } 
                                             ?>
                                         </label></td>
                                 </tr>

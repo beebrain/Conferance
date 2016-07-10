@@ -18,7 +18,6 @@ class paper extends CI_Model {
         return $this->db->affected_rows();
     }
 
-
     public function viewPaper($data = null) {
         if ($data <> null) {
             $this->db->where($data);
@@ -46,6 +45,16 @@ class paper extends CI_Model {
         $this->db->where('field_type', $field);
         $this->db->from('paper');
         return $this->db->count_all_results();
+    }
+
+    public function getpaper($data = null) {
+        if ($data <> null) {
+            $this->db->where($data);
+        }
+        $this->db->order_by("paper_id", "desc");
+        $query = $this->db->get('paper');
+
+        return $query->result();
     }
 
 }

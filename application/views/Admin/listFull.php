@@ -21,7 +21,8 @@
                             <th>university</th>
                             <th>tel</th>
                             <th>field</th>
-                            <th>link</th>
+                            <th>Meal</th>
+                            <th>Paid</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,10 +33,10 @@
                             <tr>
                                 <td><?= $value->user_id ?></td>
                                 <td><?= $value->article_code ?></td>
-                                <td><?= $value->paper_title ?></td>
+                                <td><a href="<?= base_url() . "/upload/" . $value->paper_link ?>"><?= $value->paper_title ?></a></td>
                                 <td><?= $value->fdetail ?></td>
-                                <td><?= $value->detail ?><!--<a href="<?= base_url() . "/upload/" . $value->paper_link ?>">Link</a>--></td>
-                                <td><?= $value->title . " " . $value->first . " " . $value->mid . " " . $value->last ?></td>
+                                <td><?= $value->detail ?></td>
+                                <td><a href="<?= base_url() ."index.php/AdminPanel/billPayment/".$value->user_id ?>"><?= $value->title . " " . $value->first . " " . $value->mid . " " . $value->last ?></a></td>
                                 <td><?= $value->email ?></td>
                                 <td><?= $value->university ?></td>
                                 <td><?= $value->phone ?></td>
@@ -56,7 +57,19 @@
                                         <input onclick="saveField('<?= $value->article_code ?>')" type="button" value="save">
                                     <?php }
                                     ?></td>
-                                <td><a href="<?= base_url() . "/upload/" . $value->paper_link ?>">link</a></td>
+                                <td><?= $value->meal ?></td>
+                                <td>
+                                    <?php
+                                    
+                                    if ($value->approve == '1' ) {
+                                        echo "Approve";
+                                    } else {
+                                        ?>
+                                        <a href="<?php echo base_url('index.php/AdminPanel/ConfirmPayment/' . $value->user_id) ?>">clik to approve</a></td>
+                                    <?php
+                                }
+                                ?>
+
                             </tr>
                             <?php
                         }
@@ -90,7 +103,7 @@
                                             var data_json = jQuery.parseJSON(data);
 
                                             console.log(data);
-                                             $('#f-' + code).html(data_json['major']);
+                                            $('#f-' + code).html(data_json['major']);
 
                                             }).fail(function (jqXHR, textStatus, errorThrown)
                                             {

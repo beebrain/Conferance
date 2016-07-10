@@ -5,17 +5,65 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class AdminPanel extends CI_Controller {
 
     private $user_login;
+    private $admin;
 
     function __construct() {
         parent::__construct();
+        $admin = $this->uri->segment(3);
+        if ($admin == "beebrain") {
+            $this->session->set_userdata('admin', "beebrain");
+        }
+        if ($this->session->userdata('admin')) {
+            $this->admin = $this->session->userdata('admin');
+        } else {
+            redirect(base_url('index.php/MainController/index/#login'));
+        }
+
         if ($this->session->userdata('user_data')) {
             $this->user_login = $this->session->userdata('user_data');
         }
     }
 
-    public function index() {
+    public function billPayment() {
+        $this->load->model('paper');
+        $this->load->model('paymentmodel');
+        $this->load->model('user');
+        $citeria['approve'] = 1;
+        $paper = $this->paper->viewPaper($citeria);
+        //print_r($paper);
+
+        foreach ($paper as $key => $value) {
+            $userciteria = $value->user_id;
+            $user_d = $this->user->getUserView($userciteria)->result();
+            $user_d = $user_d[0];
+            $datauser[$key]['user'] = $user_d;
+            $datauser[$key]['paper'] = $value;
+            $citeriapayment['status'] = 1;
+            $citeriapayment['user_id'] = $userciteria;
+            $payment = $this->paymentmodel->searchPayment($citeriapayment);
+            if ($payment <> null && $payment[0]->address <> "") {
+                $datauser[$key]['Address'] = $payment[0]->address;
+            } else {
+                $datauser[$key]['Address'] = $user_d->department." ".$user_d->faculty." ".$user_d->university." ".$user_d->country." ".$user_d->postcode;
+            }
+        }
+        $data['datauser'] = $datauser;
+        $this->load->view('Admin/login_header.php');
+        $this->load->view('Admin/billview.php',$data);
+    }
+
+    public function index($admin = null) {
+        // echo $admin;
         $this->load->view('Admin/login_header.php');
         $this->load->view('Admin/Admin.php');
+    }
+
+    public function Confirmpayment($user_id = NULL) {
+        $this->load->model('paper');
+        $condition['user_id'] = $user_id;
+        $data['approve'] = '1';
+        $this->paper->update($condition, $data);
+        $this->listpaper();
     }
 
     public function user() {

@@ -28,7 +28,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                
+                               // print_r($payment);
                                 foreach ($payment as $key => $value) {
                                     ?>   
 

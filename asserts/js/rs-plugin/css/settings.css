@@ -290,13 +290,14 @@ website:   	http://www.themepunch.com
     color:#fff;
     text-shadow:0px 2px 5px rgba(0, 0, 0, 0.5);
     font-weight:700;
-    font-size:14px;
-    line-height:20px;
+    font-size:20px;
+    line-height:22px;
     font-family:Arial;
     margin:0px;
     border-width:0px;
     border-style:none;
     white-space:nowrap;
+    background-color: rgba(255,255,255,1);
 }
 
 .tp-caption.medium_text {

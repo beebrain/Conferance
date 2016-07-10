@@ -135,25 +135,36 @@ class UserPanel extends CI_Controller {
         $all_data['follower_data'] = null;
 
         $citeria['user_id'] = $user_data->user_id;
-       // $citeria['status'] = '0';
-        $page = "payment.php";
-        if ($datapayment = $this->paymentmodel->getpayment($citeria)) {
-            $datapayment = $datapayment[0];
+        $this->load->model('paper');
+        $paper = $this->paper->getpaper($citeria);
+        if ($paper[0]->approve == "1") {
+            $page = "completepay.php";
+            $datapayment = $this->paymentmodel->getpayment($citeria);
 
-            $day1 = strtotime($datapayment->submit_date);
-            $day2 = strtotime(date("Y-m-d H:i:s A"));
-            $cal24 =  $day2-$day1;
+            $all_data['payment_data'] = $datapayment;
+            
+            
+        } else {
+            // $citeria['status'] = '0';
+            $page = "payment.php";
+            if ($datapayment = $this->paymentmodel->getpayment($citeria)) {
+                $datapayment = $datapayment[0];
 
-            if ($datapayment->status <= '0' && $cal24 > (48*60*60)) {
-                $dataup['status'] = '-1';
-                $this->paymentmodel->update($citeria, $dataup);
-                $page = "payment.php";
-            } else {
-                $condition['pay_id'] = $datapayment->pay_id;
-                $resultFollow = $this->followermodel->searchfollower($condition);
-                $all_data['payment_data'] = $datapayment;
-                $all_data['follower_data'] = $resultFollow;
-                $page = "comfirmpayment.php";
+                $day1 = strtotime($datapayment->submit_date);
+                $day2 = strtotime(date("Y-m-d H:i:s A"));
+                $cal24 = $day2 - $day1;
+
+                if ($datapayment->status <= '0' && $cal24 > (48 * 60 * 60)) {
+                    $dataup['status'] = '-1';
+                    $this->paymentmodel->update($citeria, $dataup);
+                    $page = "payment.php";
+                } else {
+                    $condition['pay_id'] = $datapayment->pay_id;
+                    $resultFollow = $this->followermodel->searchfollower($condition);
+                    $all_data['payment_data'] = $datapayment;
+                    $all_data['follower_data'] = $resultFollow;
+                    $page = "comfirmpayment.php";
+                }
             }
         }
 
