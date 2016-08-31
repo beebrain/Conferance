@@ -103,10 +103,10 @@
                         Faculty of Science and Technology, Uttaradit Rajabhat University, Uttaradit, Thailand
                     </div>
                     <div class="tp-caption medium_light_red sft" data-x="center" data-y="center" data-hoffset="0" data-voffset="150" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
-                        Update!! URUICST2016 Program and Oral Presentation Program
+                        Update!! URUICST2016 Program,Oral Presentation Program and  Poster Presentation Program
                     </div>
                     <div class="tp-caption small_text " data-x="center" data-y="center" data-hoffset="0" data-voffset="190" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
-                        <p>(<a href="<?= base_url('/upload/Doc/URUICST-2016-CONFERENCE-PROGRAM.pdf')?>">URUICST2016 Program</a>,<a href="<?= base_url('/upload/doc/Oral-Presentation-Program.pdf')?>"> Oral Presentation Program </a>)</p>
+                        <p>(<a href="<?= base_url('/upload/Doc/URUICST-2016-CONFERENCE-PROGRAM.pdf')?>">URUICST2016 Program</a>,<a href="<?= base_url('/upload/doc/Oral-Presentation-Program.pdf')?>"> Oral Presentation Program </a>,<a href="<?= base_url('/upload/doc/poster-Presentation-Program.pdf')?>"> Poster Presentation Program </a>)</p>
                     </div>
                     
                     
